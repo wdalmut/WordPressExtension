@@ -1,0 +1,16 @@
+{
+    "name": "wdalmut/wordpress-context",
+    "require-dev": {
+        "behat/behat": "2.5.*@stable",
+        "behat/mink-extension": "*",
+        "behat/mink-goutte-driver": "*"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-0": {
+            "Corley": "src"
+        }
+    }
+}
