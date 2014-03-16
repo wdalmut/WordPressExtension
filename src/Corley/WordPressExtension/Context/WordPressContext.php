@@ -70,6 +70,20 @@ class WordPressContext extends MinkContext
         }
     }
 
+    /**
+     * @Given /^there are plugins$/
+     */
+    public function thereArePlugins(TableNode $table)
+    {
+        foreach ($table->getHash() as $row) {
+            if ($row["status"] == "enabled") {
+                activate_plugin(WP_PLUGIN_DIR . "/" . $row["plugin"]);
+            } else {
+                deactivate_plugins(WP_PLUGIN_DIR . "/" . $row["plugin"]);
+            }
+        }
+    }
+
 
     /**
      * @Given /^I am logged in as "([^"]*)" with password "([^"]*)"$/
