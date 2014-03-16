@@ -59,6 +59,19 @@ class WordPressContext extends MinkContext
     }
 
     /**
+     * @Given /^there are posts$/
+     */
+    public function thereArePosts(TableNode $table)
+    {
+        foreach ($table->getHash() as $postData) {
+            if (!is_int(wp_insert_post($postData))) {
+                throw new \InvalidArgumentException("Invalid post information schema.");
+            }
+        }
+    }
+
+
+    /**
      * @Given /^I am logged in as "([^"]*)" with password "([^"]*)"$/
      */
     public function login($username, $password)
