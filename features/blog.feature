@@ -8,11 +8,11 @@ Feature: You can write and read blogs
             | name          | email                   | username | password |
             | BDD WordPress | walter.dalmut@gmail.com | admin    | test     |
         And there are users
-            | user_login | user_pass | user_nicename | user_email              | display_name | nickname | first_name | last_name | role   |
-            | walter     | test      | Walter        | walter.dalmut@corley.it | Wally        | wdalmut  | Walter     | Dal Mut   | editor |
+            | user_login | user_pass | user_nicename | user_email              | role   |
+            | walter     | test      | Walter        | walter.dalmut@corley.it | editor |
         And I am logged in as "walter" with password "test"
 
-    Scenario: I can publish a new blow post
+    Scenario: I can publish a new blog post
         When I am on "/wp-admin/post-new.php"
         And I fill in "post_title" with "A blog post"
         And I fill in "content" with "The post content"
