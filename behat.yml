@@ -5,9 +5,6 @@ default:
             base_url:    'http://wp.127.0.0.1.xip.io'
             goutte:      ~
             show_cmd: "firefox %s"
-    context:
-        parameters:
-            wp:
-                host: "wp.127.0.0.1.xip.io"
-                path: "../wordpress"
+        Corley\WordPressExtension\Extension:
+            path: "../wordpress"
 

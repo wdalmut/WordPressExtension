@@ -14,7 +14,7 @@ use Behat\Gherkin\Node\PyStringNode,
 //   require_once 'PHPUnit/Framework/Assert/Functions.php';
 //
 
-use Corley\WordPressContext;
+use Corley\WordPressExtension\Context\WordPressContext;
 
 /**
  * Features context.
@@ -29,6 +29,6 @@ class FeatureContext extends BehatContext
      */
     public function __construct(array $parameters)
     {
-        $this->useContext('wordpress', new WordPressContext($parameters["wp"]));
+        $this->useContext('wordpress', new WordPressContext);
     }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace Corley;
+namespace Corley\WordPressExtension\Context;
 
 use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Context\TranslatedContextInterface,
@@ -18,28 +18,6 @@ require_once 'PHPUnit/Framework/Assert/Functions.php';
 
 class WordPressContext extends MinkContext
 {
-    private $paramters;
-
-    public function __construct($parameters)
-    {
-        $this->parameters = $parameters;
-
-    }
-
-    /**
-     * @BeforeSuite
-     */
-    public static function useWordPressConfiguration(SuiteEvent $event)
-    {
-        $parameters = $event->getContextParameters();
-
-        $_SERVER['SERVER_PROTOCOL'] = 'HTTP/1.1';
-        $_SERVER['HTTP_HOST'] = $parameters["wp"]["host"];
-        $PHP_SELF = $GLOBALS['PHP_SELF'] = $_SERVER['PHP_SELF'] = '/index.php';
-
-        require_once $parameters["wp"]["path"] . '/wp-config.php';
-    }
-
     /**
      * @Given /^\w+ have|has a vanilla wordpress installation$/
      */
@@ -75,7 +53,7 @@ class WordPressContext extends MinkContext
     {
         foreach ($table->getHash() as $userData) {
             if (!is_int(wp_insert_user($userData))) {
-                throw new \InvalidArgumentException("Invalid user data");
+                throw new \InvalidArgumentException("Invalid user information schema.");
             }
         }
     }
