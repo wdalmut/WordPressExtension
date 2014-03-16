@@ -46,8 +46,6 @@ class HookListener implements EventSubscriberInterface
      */
     public function beforeSuite(SuiteEvent $event)
     {
-        $parameters = $event->getContextParameters();
-
         $url = parse_url($this->minkParams["base_url"]);
 
         $_SERVER['SERVER_PROTOCOL'] = 'HTTP/1.1';
