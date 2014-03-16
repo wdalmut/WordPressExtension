@@ -43,8 +43,21 @@ class WordPressContext extends MinkContext
     /**
      * @Given /^\w+ have|has a vanilla wordpress installation$/
      */
-    public function installWordPress()
+    public function installWordPress(TableNode $table = null)
     {
+        $name = "admin";
+        $email = "an@example.com";
+        $password = "test";
+        $username = "admin";
+
+        if ($table) {
+            $row = $table->getHash()[0];
+            $name = $row["name"];
+            $username = $row["username"];
+            $email = $row["email"];
+            $password = $row["password"];
+        }
+
         $mysqli = new \Mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $value = $mysqli->multi_query(implode("\n", array(
             "DROP DATABASE IF EXISTS " . DB_NAME . ";",
@@ -52,6 +65,6 @@ class WordPressContext extends MinkContext
         )));
         assertTrue($value);
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-        wp_install( "BDD WP", 'admin', 'walter.dalmut@gmail.com', true, '', 'test' );
+        wp_install($name, $username, $email, true, '', $password);
     }
 }
