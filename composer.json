@@ -2,6 +2,7 @@
     "name": "wdalmut/wordpress-extension",
     "type": "library",
     "description": "WordPress extension for Behat",
+    "license": "MIT",
     "require": {
         "behat/behat": "2.5.*@stable",
         "behat/mink-extension": "*"

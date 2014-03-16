@@ -1,7 +1,7 @@
 Feature: Manage plugins
     In order to manage plugins
     As an admin
-    I need to manage all plugins
+    I need to enable and disable plugins
 
     Background:
         Given I have a vanilla wordpress installation
