@@ -67,4 +67,32 @@ class WordPressContext extends MinkContext
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';
         wp_install($name, $username, $email, true, '', $password);
     }
+
+    /**
+     * @Given /^there are users$/
+     */
+    public function thereAreUsers(TableNode $table)
+    {
+        foreach ($table->getHash() as $userData) {
+            if (!is_int(wp_insert_user($userData))) {
+                throw new \InvalidArgumentException("Invalid user data");
+            }
+        }
+    }
+
+    /**
+     * @Given /^I am logged in as "([^"]*)" with password "([^"]*)"$/
+     */
+    public function login($username, $password)
+    {
+        $this->visit("wp-login.php");
+        $currentPage = $this->getSession()->getPage();
+
+        $currentPage->fillField('user_login', $username);
+        $currentPage->fillField('user_pass', $password);
+        $currentPage->findButton('wp-submit')->click();
+
+        assertTrue($this->getSession()->getPage()->hasContent('Dashboard'));
+    }
+
 }
