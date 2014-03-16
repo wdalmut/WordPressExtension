@@ -4,13 +4,10 @@ default:
         Behat\MinkExtension\Extension:
             base_url:    'http://wp.127.0.0.1.xip.io'
             goutte:      ~
+            show_cmd: "firefox %s"
     context:
         parameters:
             wp:
                 host: "wp.127.0.0.1.xip.io"
                 cms: "../wordpress"
-                db:
-                    name: 'wp'
-                    user: 'root'
-                    pass: 'root'
-                    host: '127.0.0.1'
+
