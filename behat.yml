@@ -9,5 +9,5 @@ default:
         parameters:
             wp:
                 host: "wp.127.0.0.1.xip.io"
-                cms: "../wordpress"
+                path: "../wordpress"
 

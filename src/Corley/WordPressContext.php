@@ -37,7 +37,7 @@ class WordPressContext extends MinkContext
         $_SERVER['HTTP_HOST'] = $parameters["wp"]["host"];
         $PHP_SELF = $GLOBALS['PHP_SELF'] = $_SERVER['PHP_SELF'] = '/index.php';
 
-        require_once $parameters["wp"]["cms"] . '/wp-config.php';
+        require_once $parameters["wp"]["path"] . '/wp-config.php';
     }
 
     /**
