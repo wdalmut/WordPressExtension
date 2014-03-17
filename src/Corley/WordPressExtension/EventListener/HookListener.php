@@ -11,11 +11,6 @@ use Behat\Behat\Event\ScenarioEvent;
 use Behat\Behat\Event\SuiteEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-/**
- * Hook listener
- *
- * @author Anthon Pang <apang@softwaredevelopment.ca>
- */
 class HookListener implements EventSubscriberInterface
 {
     private $path;
@@ -27,9 +22,6 @@ class HookListener implements EventSubscriberInterface
         $this->minkParams = $minkParams;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getSubscribedEvents()
     {
         $events = array(
@@ -39,11 +31,6 @@ class HookListener implements EventSubscriberInterface
         return array_combine($events, $events);
     }
 
-    /**
-     * Listens to "suite.before" event.
-     *
-     * @param \Behat\Behat\Event\SuiteEvent $event
-     */
     public function beforeSuite(SuiteEvent $event)
     {
         $url = parse_url($this->minkParams["base_url"]);
