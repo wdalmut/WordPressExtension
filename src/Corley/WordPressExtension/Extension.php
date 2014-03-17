@@ -1,7 +1,4 @@
 <?php
-/**
- * @license MIT
- */
 
 namespace Corley\WordPressExtension;
 
@@ -14,10 +11,6 @@ use Symfony\Component\Config\FileLocator,
 
 class Extension implements ExtensionInterface
 {
-
-    /**
-     * {@inheritdoc}
-     */
     public function getConfig(ArrayNodeDefinition $builder)
     {
         $builder
@@ -37,14 +30,8 @@ class Extension implements ExtensionInterface
         $container->setParameter('behat.wordpress.path', $config['path']);
     }
 
-    /**
-     * Returns compiler passes used by mink extension.
-     *
-     * @return array
-     */
     public function getCompilerPasses()
     {
-        return array(
-        );
+        return array();
     }
 }
