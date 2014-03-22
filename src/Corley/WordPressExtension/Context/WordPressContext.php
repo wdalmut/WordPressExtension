@@ -19,6 +19,8 @@ require_once 'PHPUnit/Framework/Assert/Functions.php';
 class WordPressContext extends MinkContext
 {
     /**
+     * Create a new WordPress website from scratch
+     *
      * @Given /^\w+ have|has a vanilla wordpress installation$/
      */
     public function installWordPress(TableNode $table = null)
@@ -47,6 +49,10 @@ class WordPressContext extends MinkContext
     }
 
     /**
+     * Add these users to this wordpress installation
+     *
+     * @see wp_insert_user
+     *
      * @Given /^there are users$/
      */
     public function thereAreUsers(TableNode $table)
@@ -59,6 +65,10 @@ class WordPressContext extends MinkContext
     }
 
     /**
+     * Add these posts to this wordpress installation
+     *
+     * @see wp_insert_post
+     *
      * @Given /^there are posts$/
      */
     public function thereArePosts(TableNode $table)
@@ -71,6 +81,10 @@ class WordPressContext extends MinkContext
     }
 
     /**
+     * Activate/Deactivate plugins
+     * | plugin          | status  |
+     * | plugin/name.php | enabled |
+     *
      * @Given /^there are plugins$/
      */
     public function thereArePlugins(TableNode $table)
@@ -86,6 +100,8 @@ class WordPressContext extends MinkContext
 
 
     /**
+     * Login into the reserved area of this wordpress
+     *
      * @Given /^I am logged in as "([^"]*)" with password "([^"]*)"$/
      */
     public function login($username, $password)
